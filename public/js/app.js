@@ -24790,73 +24790,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
+function Timer(props) {
+  var projects = props.projects.map(function (project, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: index
+    }, project);
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    className: "mt-6 w-full lg:w-1/2 mx-auto p-2"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "div p-2"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "mb-4 text-pink-dark text-center text-5xl"
+  }, "00:00:00"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "flex justify-center flex-col"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex justify-center flex-col sm:flex-row mb-2"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    autoFocus: true,
+    className: "text-xl text-pink-dark w-full mb-2 sm:mb-0 md:w-1/2 px-4 py-2 sm:mx-1 bg-pink-lightest focus:bg-white border border-pink-dark outline-none focus:border-pink-dark rounded",
+    type: "text",
+    placeholder: "Vad ska du jobba med?"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "appearance-none text-xl w-full md:w-1/2 px-4 py-2 sm:mx-1 bg-pink-lighter text-pink-darkest border border-transparent outline-none focus:border-pink-dark"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "",
+    defaultValue: true
+  }, "V\xE4lj projekt"), projects)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex justify-center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "w-full sm:mx-1 text-xl bg-pink-dark hover:bg-pink-darker text-pink-lightest px-4 py-2 rounded"
+  }, "B\xF6rja jobba")))));
+}
 
-var Timer =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Timer, _Component);
-
-  function Timer() {
-    _classCallCheck(this, Timer);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Timer).apply(this, arguments));
-  }
-
-  _createClass(Timer, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "mt-6 w-full lg:w-1/2 mx-auto p-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "div p-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "mb-4 text-pink-dark text-center text-5xl"
-      }, "00:00:00"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "flex justify-center flex-col"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "flex justify-center flex-col sm:flex-row mb-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        autoFocus: true,
-        className: "text-xl text-pink-dark w-full mb-2 sm:mb-0 md:w-1/2 px-4 py-2 sm:mx-1 bg-pink-lightest focus:bg-white border border-pink-dark outline-none focus:border-pink-dark rounded",
-        type: "text",
-        placeholder: "Vad ska du jobba med?"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "appearance-none text-xl w-full md:w-1/2 px-4 py-2 sm:mx-1 bg-pink-lighter text-pink-darkest border border-transparent outline-none focus:border-pink-dark"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "",
-        defaultValue: true
-      }, "V\xE4lj projekt"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Rally Sweden"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "G\xE5rd & Djurh\xE4lsan"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "flex justify-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "w-full sm:mx-1 text-xl bg-pink-dark hover:bg-pink-darker text-pink-lightest px-4 py-2 rounded"
-      }, "B\xF6rja jobba")))));
-    }
-  }]);
-
-  return Timer;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Timer, null), document.getElementById('render'));
+var projects = ['Rally Sweden', 'Gård & Djurhälsan'];
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Timer, {
+  projects: projects
+}), document.getElementById('render'));
 
 /***/ }),
 
