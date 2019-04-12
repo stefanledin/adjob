@@ -9,19 +9,29 @@ class Timer extends Component {
         this.state = {
             startTime: null,
             endTime: null,
+            timer: null,
             counter: '00:00:00'
         }
     }
 
-    startTimer(event) {
+    toggleTimer(event) {
         event.preventDefault();
+
+        if (!this.state.startTime) {
+            this.startTimer();
+        } else {
+            this.endTimer();
+        }
+    }
+
+    startTimer() {
         const startTime = new moment();
 
         this.setState({
             startTime: startTime
         });
 
-        setInterval(() => {
+        this.timer = setInterval(() => {
             this.count();
         }, 1000);
     }
@@ -37,20 +47,24 @@ class Timer extends Component {
         });
     }
 
+    endTimer() {
+        clearInterval(this.timer);
+
+        this.setState({
+            endTime: new moment()
+        });
+    }
+
     formatDiff(diff) {
-        const hours = diff._data.hours.toString();
-        const minutes = diff._data.minutes.toString();
-        const seconds = diff._data.seconds.toString();
+        let hours = diff._data.hours.toString();
+        let minutes = diff._data.minutes.toString();
+        let seconds = diff._data.seconds.toString();
 
-        let counterValue = '';
+        hours = (hours.length < 2) ? `0${hours}` : hours;
+        minutes = (minutes.length < 2) ? `0${minutes}` : minutes;
+        seconds = (seconds.length < 2) ? `0${seconds}` : seconds;
 
-        console.log(hours);
-        if (hours.length < 2) {
-            counterValue = `0${hours}`
-        } else {
-            counterValue = hours;
-        }
-        counterValue += ':'+minutes+':'+seconds;
+        const counterValue = `${hours}:${minutes}:${seconds}`;
 
         return counterValue;
     }
@@ -74,8 +88,8 @@ class Timer extends Component {
                                 {projects}
                             </select>
                         </div>
-                        <div className="flex justify-center">
-                            <button onClick={this.startTimer.bind(this)} className="w-full sm:mx-1 text-xl bg-pink-dark hover:bg-pink-darker text-pink-lightest px-4 py-2 rounded">Börja jobba</button>
+                        <div className="flex justify-center flex-col">
+                            <ToggleTimerButton onClick={this.toggleTimer.bind(this)} startTime={this.state.startTime} />
                         </div>
                     </form>
                 </div>
@@ -83,14 +97,13 @@ class Timer extends Component {
         )
     }
 }
-const projects = [
-    {
-        id: 1,
-        name: 'Rally Sweden'
-    },
-    {
-        id: 2,
-        name: 'Gård & Djurhälsan'
-    }
-]
-ReactDOM.render(<Timer projects={projects} />, document.getElementById('render'));
+
+const ToggleTimerButton = function (props) {
+    let baseClasses = 'w-full sm:mx-1 text-xl bg-pink-dark hover:bg-pink-darker text-pink-lightest px-4 py-2 rounded mb-2';
+    const buttonLabel = (props.startTime) ? 'Sluta jobba' : 'Börja jobba'
+    return(
+        <button onClick={props.onClick} className={baseClasses}>{buttonLabel}</button>
+    );
+}
+
+export default Timer;

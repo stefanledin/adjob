@@ -42404,7 +42404,12 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Timer */ "./resources/js/components/Timer.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Timer */ "./resources/js/components/Timer.js");
+/* harmony import */ var _components_Entries__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Entries */ "./resources/js/components/Entries.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -42413,13 +42418,106 @@ __webpack_require__.r(__webpack_exports__);
 //require('./bootstrap');
 
 
+
+
+var projects = [{
+  id: 1,
+  name: 'Rally Sweden'
+}, {
+  id: 2,
+  name: 'Gård & Djurhälsan'
+}];
+var entries = [{
+  id: 1,
+  project: 1,
+  description: 'Lorem ipsum dolor sit amet',
+  duration: '00:02:39'
+}, {
+  id: 2,
+  project: 1,
+  description: 'Bob loblaw law blog',
+  duration: '00:03:01'
+}];
+
+var App = function App() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Timer__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    projects: projects
+  }), entries.length > 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Entries__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    items: entries
+  }));
+};
+
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('render'));
+
+/***/ }),
+
+/***/ "./resources/js/components/Entries.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Entries.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Entry__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Entry */ "./resources/js/components/Entry.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  var entryList = props.items.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Entry__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: item.id,
+      data: item
+    });
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    className: "entries mx-auto"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "mb-2 mx-2 text-pink-darker"
+  }, "Tidrapport"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex flex-row flex-wrap px-1 lg:px-0"
+  }, entryList)));
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/Entry.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Entry.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "entry w-full sm:w-1/2 lg:w-1/3 p-1 lg:p-2"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bg-orange-lightest shadow"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", {
+    className: "block px-4 pt-2 pb-1 bg-orange-lighter text-orange-darker"
+  }, props.data.project), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "px-4 py-2"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "mt-2 mb-4 text-orange-darker"
+  }, props.data.duration), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "block"
+  }, props.data.description))));
+});
+
 /***/ }),
 
 /***/ "./resources/js/components/Timer.js":
 /*!******************************************!*\
   !*** ./resources/js/components/Timer.js ***!
   \******************************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42428,16 +42526,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-<<<<<<< HEAD
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-=======
->>>>>>> 0c8d3b2550368c30dd939f196d43a6209a805fb5
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-<<<<<<< HEAD
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
@@ -42468,22 +42564,33 @@ function (_Component) {
     _this.state = {
       startTime: null,
       endTime: null,
+      timer: null,
       counter: '00:00:00'
     };
     return _this;
   }
 
   _createClass(Timer, [{
+    key: "toggleTimer",
+    value: function toggleTimer(event) {
+      event.preventDefault();
+
+      if (!this.state.startTime) {
+        this.startTimer();
+      } else {
+        this.endTimer();
+      }
+    }
+  }, {
     key: "startTimer",
-    value: function startTimer(event) {
+    value: function startTimer() {
       var _this2 = this;
 
-      event.preventDefault();
       var startTime = new moment__WEBPACK_IMPORTED_MODULE_2___default.a();
       this.setState({
         startTime: startTime
       });
-      setInterval(function () {
+      this.timer = setInterval(function () {
         _this2.count();
       }, 1000);
     }
@@ -42498,6 +42605,14 @@ function (_Component) {
       });
     }
   }, {
+    key: "endTimer",
+    value: function endTimer() {
+      clearInterval(this.timer);
+      this.setState({
+        endTime: new moment__WEBPACK_IMPORTED_MODULE_2___default.a()
+      });
+    }
+  }, {
     key: "formatDiff",
     value: function formatDiff(diff) {
       var hours = diff._data.hours.toString();
@@ -42506,16 +42621,10 @@ function (_Component) {
 
       var seconds = diff._data.seconds.toString();
 
-      var counterValue = '';
-      console.log(hours);
-
-      if (hours.length < 2) {
-        counterValue = "0".concat(hours);
-      } else {
-        counterValue = hours;
-      }
-
-      counterValue += ':' + minutes + ':' + seconds;
+      hours = hours.length < 2 ? "0".concat(hours) : hours;
+      minutes = minutes.length < 2 ? "0".concat(minutes) : minutes;
+      seconds = seconds.length < 2 ? "0".concat(seconds) : seconds;
+      var counterValue = "".concat(hours, ":").concat(minutes, ":").concat(seconds);
       return counterValue;
     }
   }, {
@@ -42548,63 +42657,27 @@ function (_Component) {
         value: "",
         defaultValue: true
       }, "V\xE4lj projekt"), projects)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "flex justify-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.startTimer.bind(this),
-        className: "w-full sm:mx-1 text-xl bg-pink-dark hover:bg-pink-darker text-pink-lightest px-4 py-2 rounded"
-      }, "B\xF6rja jobba")))));
+        className: "flex justify-center flex-col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ToggleTimerButton, {
+        onClick: this.toggleTimer.bind(this),
+        startTime: this.state.startTime
+      })))));
     }
   }]);
 
   return Timer;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-var projects = [{
-  id: 1,
-  name: 'Rally Sweden'
-}, {
-  id: 2,
-  name: 'Gård & Djurhälsan'
-}];
-=======
-function Timer(props) {
-  var projects = props.projects.map(function (project, index) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-      key: index
-    }, project);
-  });
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-    className: "mt-6 w-full lg:w-1/2 mx-auto p-2"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "div p-2"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "mb-4 text-pink-dark text-center text-5xl"
-  }, "00:00:00"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    className: "flex justify-center flex-col"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "flex justify-center flex-col sm:flex-row mb-2"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    autoFocus: true,
-    className: "text-xl text-pink-dark w-full mb-2 sm:mb-0 md:w-1/2 px-4 py-2 sm:mx-1 bg-pink-lightest focus:bg-white border border-pink-dark outline-none focus:border-pink-dark rounded",
-    type: "text",
-    placeholder: "Vad ska du jobba med?"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    className: "appearance-none text-xl w-full md:w-1/2 px-4 py-2 sm:mx-1 bg-pink-lighter text-pink-darkest border border-transparent outline-none focus:border-pink-dark"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "",
-    defaultValue: true
-  }, "V\xE4lj projekt"), projects)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "flex justify-center"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "w-full sm:mx-1 text-xl bg-pink-dark hover:bg-pink-darker text-pink-lightest px-4 py-2 rounded"
-  }, "B\xF6rja jobba")))));
-}
+var ToggleTimerButton = function ToggleTimerButton(props) {
+  var baseClasses = 'w-full sm:mx-1 text-xl bg-pink-dark hover:bg-pink-darker text-pink-lightest px-4 py-2 rounded mb-2';
+  var buttonLabel = props.startTime ? 'Sluta jobba' : 'Börja jobba';
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: props.onClick,
+    className: baseClasses
+  }, buttonLabel);
+};
 
-var projects = ['Rally Sweden', 'Gård & Djurhälsan'];
->>>>>>> 0c8d3b2550368c30dd939f196d43a6209a805fb5
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Timer, {
-  projects: projects
-}), document.getElementById('render'));
+/* harmony default export */ __webpack_exports__["default"] = (Timer);
 
 /***/ }),
 
