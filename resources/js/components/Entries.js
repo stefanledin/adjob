@@ -3,7 +3,12 @@ import Entry from './Entry';
 
 export default function (props) {
     const entryList = props.items.map(item => {
-        return <Entry key={item.id} data={item} />
+        /**
+         * Hitta projektet som entryt tillhör.
+         */
+        const project = props.projects.find(project => project.id === item.project);
+
+        return <Entry key={item.id} data={item} project={project} />
     });
 
     return(

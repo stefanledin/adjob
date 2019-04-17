@@ -42,7 +42,7 @@ const App = function () {
         <div>
             <Timer projects={projects} />
             {entries.length > 0 &&
-                <Entries items={entries} />
+                <Entries items={entries} projects={projects} />
             }
         </div>
     )

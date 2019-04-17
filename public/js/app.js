@@ -42443,7 +42443,8 @@ var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Timer__WEBPACK_IMPORTED_MODULE_2__["default"], {
     projects: projects
   }), entries.length > 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Entries__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    items: entries
+    items: entries,
+    projects: projects
   }));
 };
 
@@ -42467,9 +42468,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
   var entryList = props.items.map(function (item) {
+    /**
+     * Hitta projektet som entryt tillhör.
+     */
+    var project = props.projects.find(function (project) {
+      return project.id === item.project;
+    });
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Entry__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: item.id,
-      data: item
+      data: item,
+      project: project
     });
   });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -42502,7 +42510,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "bg-orange-lightest shadow"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", {
     className: "block px-4 pt-2 pb-1 bg-orange-lighter text-orange-darker"
-  }, props.data.project), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, props.project.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "px-4 py-2"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "mt-2 mb-4 text-orange-darker"
