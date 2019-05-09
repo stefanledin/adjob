@@ -27,6 +27,7 @@
         "vue-template-compiler": "^2.6.8"
     },
     "dependencies": {
+        "dexie": "^2.0.4",
         "moment": "^2.24.0"
     }
 }

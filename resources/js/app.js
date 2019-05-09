@@ -9,43 +9,50 @@
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import db from './db';
 import Timer from './components/Timer';
 import Entries from './components/Entries';
 
-const projects = [
-    {
-        id: 1,
-        name: 'Rally Sweden'
-    },
-    {
-        id: 2,
-        name: 'Gård & Djurhälsan'
-    }
-];
-const entries = [
-    {
-        id: 1,
-        project: 1,
-        description: 'Lorem ipsum dolor sit amet',
-        duration: '00:02:39'
-    },
-    {
-        id: 2,
-        project: 1,
-        description: 'Bob loblaw law blog',
-        duration: '00:03:01'
-    }
-];
+class App extends Component {
 
-const App = function () {
-    return(
-        <div>
-            <Timer projects={projects} />
-            {entries.length > 0 &&
-                <Entries items={entries} projects={projects} />
-            }
-        </div>
-    )
+    constructor(props) {
+        super(props);
+        this.state = {
+            entries: [],
+            projects: []
+        }
+    }
+
+    componentDidMount() {
+        db.table('entries').toArray((data) => this.setState({entries: data}));
+        db.table('projects').toArray((data) => this.setState({projects: data}));
+    }
+
+    async addEntry(data) {
+        const entryID = await db.table('entries').add({
+            project: data.project,
+            description: data.description,
+            duration: data.duration
+        });
+
+        const newEntry = await db.table('entries').get(entryID);
+        let currentEntries = this.state.entries;
+        currentEntries.unshift(newEntry);
+        this.setState({entries: currentEntries});
+    }
+
+    render() {
+        return(
+            <div>
+                {this.state.projects.length > 0 &&
+                    <Timer projects={this.state.projects} onNewEntry={this.addEntry.bind(this)} />
+                }
+                {(this.state.entries.length > 0) && (this.state.projects.length > 0) &&
+                    <Entries items={this.state.entries} projects={this.state.projects} />
+                }
+            </div>
+        )
+    }
 }
 
 ReactDOM.render(<App />, document.getElementById('render'));
